@@ -7,7 +7,7 @@ end
 games = ARGF.map do |line|
   game, sets = line.chomp.split(": ")
 
-  if %i[red green blue].all? { |color| valid?(sets, color) }
+  if MAX.keys.all? { |color| valid?(sets, color) }
     game.split.last.to_i
   end
 end
