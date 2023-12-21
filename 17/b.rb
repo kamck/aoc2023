@@ -1,6 +1,7 @@
 require "pqueue"
 
-MAXSTEPS = 3
+MINSTEPS = 4
+MAXSTEPS = 10
 
 Node = Data.define(:x, :y)
 
@@ -55,6 +56,7 @@ def a_star(graph, start)
 
     graph.neighbors(current.node).each do |neighbor, direction|
       next if current.direction == direction && current.steps == MAXSTEPS
+      next if current.direction != direction && current.steps < MINSTEPS && current.node != Node[0, 0]
       next if backtracking? current.direction, direction
 
       new_steps = current.direction == direction ? current.steps + 1 : 1
