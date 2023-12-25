@@ -4,8 +4,6 @@
 ACCEPTED = "A"
 REJECTED = "R"
 
-Workflow = Data.define(:name, :rules)
-
 def parse_workflows(chunk)
   chunk.map.each_with_object({}) do |line, hsh|
     i_start = line.index("{")
